@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Reasons I Love You ❤️ - Lucile</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           GLOBAL & RESET STYLES
+        ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #8fd3ff 0%, #3ea7d8 20%, #0b5d8f 50%, #063b63 75%, #021f38 100%);
+            position: relative;
+            color: #fff;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.08);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Ambient Glows */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 700px;
+            height: 700px;
+            background: #ffd6e7;
+            filter: blur(140px);
+            top: -220px;
+            left: -200px;
+            opacity: 0.5;
+            animation: float1 12s infinite alternate;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: #fff0f5;
+            filter: blur(120px);
+            bottom: -200px;
+            right: -200px;
+            opacity: 0.4;
+            animation: float2 14s infinite alternate;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @keyframes float1 {
+            from { transform: translateY(0) translateX(0); }
+            to { transform: translateY(120px) translateX(100px); }
+        }
+
+        @keyframes float2 {
+            from { transform: translateY(0); }
+            to { transform: translateY(-120px); }
+        }
+
+        /* View Section Management */
+        .view-section {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+            z-index: 20;
+            padding: 20px;
+        }
+
+        .view-section.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ==========================================
+           OCEAN BACKGROUND & ANIMATIONS
+        ========================================== */
+        #ocean-bg {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .surface-light {
+            position: absolute;
+            top: -350px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1400px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255,255,255,.35), rgba(255,255,255,.08), transparent 75%);
+            filter: blur(60px);
+            animation: surfaceLight 10s ease-in-out infinite;
+        }
+
+        @keyframes surfaceLight {
+            0%, 100% { opacity: .45; transform: translateX(-50%) scale(1); }
+            50% { opacity: .8; transform: translateX(-50%) scale(1.08); }
+        }
+
+        .ray {
+            position: absolute;
+            top: -150px;
+            width: 180px;
+            height: 120%;
+            background: linear-gradient(to bottom, rgba(255,255,255,.18), transparent);
+            transform: rotate(8deg);
+            filter: blur(12px);
+            animation: rayMove 12s ease-in-out infinite;
+            opacity: .4;
+        }
+
+        .ray:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .ray:nth-child(2) { left: 32%; animation-delay: 3s; }
+        .ray:nth-child(3) { left: 55%; animation-delay: 6s; }
+        .ray:nth-child(4) { left: 78%; animation-delay: 9s; }
+
+        @keyframes rayMove {
+            0%, 100% { transform: rotate(8deg) translateY(0); }
+            50% { transform: rotate(5deg) translateY(40px); }
+        }
+
+        .wave {
+            position: fixed;
+            bottom: 120px;
+            left: -50%;
+            width: 200%;
+            height: 180px;
+            background: rgba(255,255,255,.08);
+            border-radius: 50%;
+            animation: waveMove 10s linear infinite;
+            z-index: 8;
+            pointer-events: none;
+        }
+
+        .wave:nth-child(2) {
+            bottom: 90px;
+            opacity: .5;
+            animation-duration: 14s;
+            animation-direction: reverse;
+        }
+
+        @keyframes waveMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(50%); }
+        }
+
+        .sea-glow {
+            position: fixed;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0,255,255,.25), transparent 70%);
+            filter: blur(30px);
+            animation: glowMove 12s ease-in-out infinite;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        @keyframes glowMove {
+            0%, 100% { transform: translate(0,0); }
+            50% { transform: translate(80px,-80px); }
+        }
+
+        /* Dynamic Ocean Floor */
+        .ocean-floor {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(to top, #5d4a2c, #9d8155, transparent);
+            z-index: 7;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .seaweed {
+            position: absolute;
+            bottom: 0;
+            width: 12px;
+            height: 120px;
+            background: #2ecc71;
+            border-radius: 20px;
+            transform-origin: bottom;
+            animation: wave 3s ease-in-out infinite;
+        }
+
+        .seaweed1 { left: 8%; height: 120px; }
+        .seaweed2 { left: 18%; height: 170px; animation-delay: .5s; }
+        .seaweed3 { right: 18%; height: 150px; animation-delay: 1s; }
+        .seaweed4 { right: 8%; height: 180px; animation-delay: 1.5s; }
+
+        @keyframes wave {
+            0%, 100% { transform: rotate(-6deg); }
+            50% { transform: rotate(7deg); }
+        }
+
+        .coral {
+            position: absolute;
+            bottom: 0;
+            width: 90px;
+            height: 80px;
+            border-radius: 45px;
+            background: #ff7da7;
+            filter: blur(.5px);
+        }
+
+        .coral1 { left: 28%; }
+        .coral2 { right: 25%; background: #ff9560; }
+
+        .starfish {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            font-size: 45px;
+            animation: spinStar 10s linear infinite;
+        }
+
+        @keyframes spinStar {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .shell {
+            position: absolute;
+            bottom: 15px;
+            right: 15%;
+            font-size: 45px;
+            animation: shellGlow 2.5s ease-in-out infinite;
+        }
+
+        @keyframes shellGlow {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0px white); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 15px white); }
+        }
+
+        /* ==========================================
+           PARTICLES, FISH & ANIMATED ELEMENTS
+        ========================================== */
+        #bubbles, #hearts, #jellyContainer, #fishContainer {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        #bubbles { z-index: 5; }
+        #hearts { z-index: 6; }
+        #jellyContainer { z-index: 4; }
+        #fishContainer { z-index: 100; }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.85), rgba(255,255,255,.2));
+            border: 1px solid rgba(255,255,255,.3);
+            box-shadow: 0 0 12px rgba(255,255,255,.25);
+            animation: bubbleFloat linear forwards;
+        }
+
+        @keyframes bubbleFloat {
+            0% { transform: translateY(0) scale(.2); opacity: 0; }
+            15% { opacity: 1; }
+            100% { transform: translateY(-120vh) translateX(40px) scale(1); opacity: 0; }
+        }
+
+        .heart {
+            position: absolute;
+            color: #fff;
+            font-size: 22px;
+            animation: rise linear forwards;
+            opacity: .85;
+            pointer-events: none;
+        }
+
+        @keyframes rise {
+            from { transform: translateY(100vh) scale(.4); opacity: 0; }
+            20% { opacity: 1; }
+            to { transform: translateY(-120px) rotate(360deg) scale(1.3); opacity: 0; }
+        }
+
+        .fish {
+            position: absolute;
+            left: -150px;
+            display: block;
+            z-index: 101;
+            pointer-events: none;
+            opacity: 0.95;
+            filter: drop-shadow(0 0 12px rgba(255,255,255,.25));
+            animation: fishSwimReverse linear forwards;
+        }
+
+@keyframes fishSwim {
+    0% {
+        left: -150px;
+        transform: translateY(0) scaleX(-1);
+    }
+
+    50% {
+        transform: translateY(-25px) scaleX(-1);
+    }
+
+    100% {
+        left: 110%;
+        transform: translateY(25px) scaleX(-1);
+    }
+}
+
+@keyframes fishSwimReverse {
+    0% {
+        left: 110%;
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-25px);
+    }
+
+    100% {
+        left: -150px;
+        transform: translateY(25px);
+    }
+}
+        }
+
+        #shark {
+            position: fixed;
+            font-size: 60px;
+            pointer-events: none;
+            z-index: 50;
+            transition: transform .15s linear;
+            filter: drop-shadow(0 0 18px rgba(255,255,255,.35));
+            animation: sharkFloat 2.8s ease-in-out infinite;
+            left: 50%;
+            top: 50%;
+        }
+
+        @keyframes sharkFloat {
+            0%, 100% { transform: translate(-50%,-50%) rotate(-6deg); }
+            50% { transform: translate(-50%,-50%) rotate(6deg); }
+        }
+
+        .jelly {
+            position: absolute;
+            font-size: 45px;
+            opacity: .45;
+            animation: jellyMove 18s linear infinite;
+        }
+
+        @keyframes jellyMove {
+            0% { transform: translateY(120vh); }
+            100% { transform: translateY(-150px); }
+        }
+
+        /* Buttons */
+        button {
+            padding: 18px 42px;
+            font-size: 20px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: white;
+            color: #ff5d8f;
+            font-weight: 600;
+            transition: .35s;
+            box-shadow: 0 10px 30px rgba(255,105,150,.3);
+        }
+
+        button:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(255,105,150,.45);
+        }
+
+        #musicBtn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            padding: 10px 20px;
+            font-size: 14px;
+            background: rgba(255,255,255,0.25);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.4);
+            box-shadow: none;
+        }
+
+        #musicBtn:hover {
+            background: rgba(255,255,255,0.4);
+            transform: scale(1.05);
+        }
+
+        /* ==========================================
+           VIEW 1: HERO SECTION
+        ========================================== */
+        .hero {
+            position: relative;
+            z-index: 20;
+            width: 90%;
+            max-width: 760px;
+            padding: 60px;
+            text-align: center;
+            background: rgba(255,255,255,.18);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,.35);
+            border-radius: 35px;
+            box-shadow: 0 25px 70px rgba(0,0,0,.15);
+            animation: fadeUp 1.4s ease;
+        }
+
+        .hero h3 {
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: white;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 85px;
+            color: white;
+            margin-bottom: 25px;
+            text-shadow: 0 0 30px rgba(255,255,255,.4);
+        }
+
+        .hero p {
+            color: white;
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 45px;
+        }
+
+        /* ==========================================
+           VIEW 2: REASONS SECTION & DEPTH SYSTEM
+        ========================================== */
+        .deep-ocean-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 2s, transform 0.8s, filter 0.8s;
+            position: absolute;
+            inset: 0;
+        }
+
+        .deep-ocean-container.diving {
+            transform: scale(1.05);
+            filter: brightness(.7);
+        }
+function updateOceanDepth(){
+
+    const depth = currentReason + 1;
+
+    if(depth <= 20){
+
+        document.body.style.background =
+        "linear-gradient(to bottom,#8fd3ff,#3ea7d8,#0b5d8f)";
+
+        depthText.innerHTML =
+        `Depth: ${depth*5}m 🌊<br>Near the surface`;
+
+    }
+
+    else if(depth <= 40){
+
+        document.body.style.background =
+        "linear-gradient(to bottom,#3ea7d8,#056a9b,#033b63)";
+
+        depthText.innerHTML =
+        `Depth: ${depth*5}m 🪸<br>Coral Reef`;
+
+    }
+
+    else if(depth <= 60){
+
+        document.body.style.background =
+        "linear-gradient(to bottom,#04486f,#032c4a,#021d38)";
+
+        depthText.innerHTML =
+        `Depth: ${depth*5}m 🦈<br>Shark Territory`;
+
+    }
+
+    else if(depth <= 80){
+
+        document.body.style.background =
+        "linear-gradient(to bottom,#021d38,#01111f,#000814)";
+
+        depthText.innerHTML =
+        `Depth: ${depth*5}m 🌌<br>Deep Ocean`;
+
+    }
+
+    else{
+
+        document.body.style.background =
+        "linear-gradient(to bottom,#000814,#00030a,#000000)";
+
+        depthText.innerHTML =
+        `Depth: ${depth*5}m 💎<br>Treasure Zone`;
+
+    }
+
+}
+
+        .reason-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 45px;
+            border-radius: 30px;
+            width: 90%;
+            max-width: 700px;
+            text-align: center;
+            color: white;
+            z-index: 20;
+            box-shadow: 0 0 50px rgba(0,0,0,0.25);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pearl {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, white, #bdefff);
+            box-shadow: 0 0 30px white;
+            animation: pearlGlow 2s infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes pearlGlow {
+            50% { box-shadow: 0 0 60px white; }
+        }
+
+        .reason-card h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .reason-card p {
+            font-size: 24px;
+            line-height: 1.7;
+            min-height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+
+        #nextBtn {
+            margin-top: 25px;
+            background: white;
+            color: #006994;
+        }
+
+        .depth {
+            position: absolute;
+            top: 30px;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            z-index: 20;
+            line-height: 1.4;
+        }
+
+        /* ==========================================
+           VIEW 3: ENDING SECTION
+        ========================================== */
+        .deep-ending {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background:transparent;linear-gradient(to bottom, #021d38, #000814);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .ending {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+            padding: 40px;
+            background: rgba(255, 255, 255, .1);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.3);
+            animation: fadeUp 1.5s;
+        }
+
+        .ending h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 80px;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        #typewriter {
+            font-size: 22px;
+            line-height: 1.8;
+            color: white;
+            min-height: 220px;
+            white-space: pre-line;
+            margin-bottom: 30px;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero { padding: 35px; }
+            .hero h1 { font-size: 55px; }
+            .hero p { font-size: 17px; }
+            button { font-size: 17px; padding: 15px 30px; }
+            .reason-card { padding: 30px; }
+            .reason-card p { font-size: 18px; min-height: 150px; }
+            .ending h1 { font-size: 55px; }
+            #typewriter { font-size: 18px; }
+            #shark { font-size: 40px; }
+            .ocean-floor { height: 130px; }
+            .surface-light { width: 800px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio Elements -->
+    <audio id="loveMusic" loop>
+        <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="oceanSound" loop>
+        <source src="ocean.mp3" type="audio/mp3">
+    </audio>
+
+    <button id="musicBtn">🎵 Toggle Music</button>
+
+    <!-- Ocean Background Effects -->
+    <div id="ocean-bg">
+        <div class="surface-light"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+        <div class="ray"></div>
+    </div>
+
+    <div class="wave"></div>
+    <div class="wave"></div>
+
+    <div class="sea-glow"></div>
+
+    <!-- Floating Sea Life & Elements -->
+    <div id="jellyContainer"></div>
+    <div id="fishContainer"></div>
+    <div id="bubbles"></div>
+    <div id="hearts"></div>
+
+    <div id="shark">🦈</div>
+
+    <!-- Ocean Floor -->
+    <div class="ocean-floor">
+        <div class="seaweed seaweed1"></div>
+        <div class="seaweed seaweed2"></div>
+        <div class="seaweed seaweed3"></div>
+        <div class="seaweed seaweed4"></div>
+        <div class="coral coral1"></div>
+        <div class="coral coral2"></div>
+        <div class="starfish">⭐</div>
+        <div class="shell">🐚</div>
+    </div>
+
+    <div class="overlay"></div>
+
+    <!-- ==========================================
+         SECTION 1: HERO / LANDING
+    ========================================== -->
+    <section id="hero-view" class="view-section active">
+        <div class="hero">
+            <h3>Dive with me...</h3>
+            <h1>Lucile 💙</h1>
+            <p>
+                Let's leave the surface behind.<br>
+                Deep beneath the waves,<br>
+                where the ocean keeps its greatest treasures...<br>
+                I want to show you mine.<br>
+                100 reasons why my heart chose you.
+            </p>
+            <button id="startBtn">Start Diving 🌊</button>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 2: REASONS CAROUSEL & DEPTH
+    ========================================== -->
+    <section id="reasons-view" class="view-section">
+        <div class="deep-ocean-container surface" id="oceanScene">
+            <div class="depth">
+                <span id="depthText">Depth: 0m 🌊<br>Near the surface ☀️</span>
+            </div>
+
+            <div class="reason-card">
+                <div class="pearl"></div>
+                <h2>Reason <span id="number">1</span>/100</h2>
+                <p id="reason">Loading...</p>
+                <button id="nextBtn">Dive Deeper 🫧</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 3: ENDING TREASURE & TYPEWRITER
+    ========================================== -->
+    <section id="ending-view" class="view-section">
+        <div class="deep-ending">
+            <div class="ending">
+                <h1>Lucile ❤️</h1>
+                <p id="typewriter"></p>
+                <button id="restartBtn">Read Again ❤️</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         JAVASCRIPT LOGIC
+    ========================================== -->
+    <script>
+        // ------------------------------------------
+        // DATA: 100 REASONS
+        // ------------------------------------------
+        const reasons = [
+            "Because your smile makes my heart feel at home.",
+            "Because your laugh is my favorite melody.",
+            "Because you make ordinary days feel extraordinary.",
+            "Because every conversation with you becomes my favorite part of the day.",
+            "Because your kindness inspires me.",
+            "Because you make me want to become a better person.",
+            "Because you believe in me even when I doubt myself.",
+            "Because your eyes tell stories words never could.",
+            "Because every moment with you feels precious.",
+            "Because you make my heart race in the sweetest way.",
+            "Because your happiness matters to me.",
+            "Because your hugs feel like the safest place on Earth.",
+            "Because your voice can calm any storm inside me.",
+            "Because your little habits make you even more adorable.",
+            "Because you're beautiful inside and out.",
+            "Because you make me laugh without trying.",
+            "Because every memory with you is priceless.",
+            "Because you understand me in ways no one else does.",
+            "Because being with you feels effortless.",
+            "Because I love the way you see the world.",
+            "Because you make every place feel like home.",
+            "Because your heart is as beautiful as your smile.",
+            "Because I never get tired of hearing your voice.",
+            "Because you always make my day brighter.",
+            "Because your presence brings me peace.",
+            "Because you make me believe in true love.",
+            "Because your little messages can change my whole mood.",
+            "Because every moment with you becomes a memory I treasure.",
+            "Because you make my world more colorful.",
+            "Because I can be completely myself with you.",
+            "Because your smile is my favorite sunrise.",
+            "Because even your silence feels comforting.",
+            "Because you make my heart feel understood.",
+            "Because your dreams matter to me.",
+            "Because your happiness is one of my biggest wishes.",
+            "Because you make love feel easy and natural.",
+            "Because every day with you teaches me something beautiful.",
+            "Because your kindness never goes unnoticed.",
+            "Because you make ordinary moments unforgettable.",
+            "Because you are my favorite notification.",
+            "Because every memory with you is a treasure.",
+            "Because you make me smile without even trying.",
+            "Because you always stay in my thoughts.",
+            "Because your heart is incredibly gentle.",
+            "Because you make me feel lucky every day.",
+            "Because I admire your strength.",
+            "Because you inspire me to dream bigger.",
+            "Because your smile is my favorite view.",
+            "Because you make rainy days feel warm.",
+            "Because your love makes me feel complete.",
+            "Because you make every goodbye difficult.",
+            "Because every hello from you is worth waiting for.",
+            "Because you are the first person I want to tell everything to.",
+            "Because your laugh is contagious.",
+            "Because you make my heart skip a beat.",
+            "Because you are beautiful even when you don't realize it.",
+            "Because I love every little detail about you.",
+            "Because your happiness feels like my own.",
+            "Because you make my future look brighter.",
+            "Because loving you is the easiest thing I've ever done.",
+            "Because you make every ordinary moment feel magical.",
+            "Because your smile is my favorite kind of sunshine.",
+            "Because you always know how to make me feel better.",
+            "Because your heart is full of kindness.",
+            "Because I never get tired of talking to you.",
+            "Because every day with you feels like a new adventure.",
+            "Because you make me believe in forever.",
+            "Because your eyes are my favorite place to get lost.",
+            "Because you make me laugh even on difficult days.",
+            "Because I love the way you care about people.",
+            "Because you are the best part of my every day.",
+            "Because your hugs make everything feel okay.",
+            "Because you make me feel safe.",
+            "Because I love hearing your dreams for the future.",
+            "Because you make every memory unforgettable.",
+            "Because you are as beautiful on the inside as you are on the outside.",
+            "Because I admire your courage.",
+            "Because you make me want to write love stories.",
+            "Because you make life more meaningful.",
+            "Because my heart chose you without hesitation.",
+            "Because every love song reminds me of you.",
+            "Because you make my heart smile.",
+            "Because I love the way you make me feel.",
+            "Because your happiness will always matter to me.",
+            "Because you make my life brighter just by being in it.",
+            "Because every day I find a new reason to love you.",
+            "Because you make distance feel smaller.",
+            "Because you are my comfort after every difficult day.",
+            "Because you make me believe that miracles exist.",
+            "Because you are my favorite person in the world.",
+            "Because your smile is the first thing I want to see every morning.",
+            "Because your voice feels like home.",
+            "Because I want to celebrate every little moment with you.",
+            "Because I can imagine my future with you.",
+            "Because loving you has become a part of who I am.",
+            "Because you are the most beautiful chapter of my life.",
+            "Because you are the dream I never want to wake up from.",
+            "Because if I had a thousand hearts, every one of them would belong to you.",
+            "Because no matter where life takes us, my heart will always find its way back to you.",
+            "Because out of all the oceans and all the treasures in this world... my greatest treasure will always be you, Lucile. ❤️"
+        ];
+
+        // ------------------------------------------
+        // VIEW NAVIGATION & STATE
+        // ------------------------------------------
+        let currentReason = 0;
+
+        const heroView = document.getElementById("hero-view");
+        const reasonsView = document.getElementById("reasons-view");
+        const endingView = document.getElementById("ending-view");
+
+        function switchView(fromView, toView) {
+            fromView.classList.remove("active");
+            setTimeout(() => {
+                toView.classList.add("active");
+            }, 400);
+        }
+
+        // ------------------------------------------
+        // AUDIO CONTROLLER
+        // ------------------------------------------
+        const loveMusic = document.getElementById("loveMusic");
+        const oceanSound = document.getElementById("oceanSound");
+        const musicBtn = document.getElementById("musicBtn");
+
+        function startAudio() {
+            if (oceanSound) {
+                oceanSound.volume = 0.08;
+                oceanSound.play().catch(() => console.log("Audio play blocked by browser."));
+            }
+            if (loveMusic) {
+                loveMusic.volume = 0.3;
+                loveMusic.play().catch(() => console.log("Audio play blocked by browser."));
+            }
+        }
+
+        if (musicBtn) {
+            musicBtn.addEventListener("click", () => {
+                if (!loveMusic) return;
+                if (loveMusic.paused) {
+                    loveMusic.play();
+                    oceanSound.play();
+                    musicBtn.innerHTML = "⏸️ Pause Audio";
+                } else {
+                    loveMusic.pause();
+                    oceanSound.pause();
+                    musicBtn.innerHTML = "🎵 Play Audio";
+                }
+            });
+        }
+
+        // ------------------------------------------
+        // REASONS SYSTEM & DEPTH LOGIC
+        // ------------------------------------------
+        const reasonText = document.getElementById("reason");
+        const numberText = document.getElementById("number");
+        const depthText = document.getElementById("depthText");
+        const oceanScene = document.getElementById("oceanScene");
+        const nextBtn = document.getElementById("nextBtn");
+
+        function updateOceanDepth() {
+
+    let depthIndex = currentReason + 1;
+    let depthMeters = depthIndex * 5;
+
+    if (depthIndex <= 20) {
+
+        document.body.style.background =
+        "linear-gradient(to bottom,#8fd3ff,#3ea7d8,#0b5d8f)";
+
+        depthText.innerHTML =
+        `Depth: ${depthMeters}m 🌊<br>Near the surface ☀️`;
+
+    }
+
+    else if (depthIndex <= 40) {
+
+        document.body.style.background =
+        "linear-gradient(to bottom,#3ea7d8,#056a9b,#033b63)";
+
+        depthText.innerHTML =
+        `Depth: ${depthMeters}m 🪸<br>Coral Reef`;
+
+    }
+
+    else if (depthIndex <= 60) {
+
+        document.body.style.background =
+        "linear-gradient(to bottom,#04486f,#032c4a,#021d38)";
+
+        depthText.innerHTML =
+        `Depth: ${depthMeters}m 🦈<br>Shark Territory`;
+
+    }
+
+    else if (depthIndex <= 80) {
+
+        document.body.style.background =
+        "linear-gradient(to bottom,#021d38,#01111f,#000814)";
+
+        depthText.innerHTML =
+        `Depth: ${depthMeters}m 🌌<br>Deep Ocean`;
+
+    }
+
+    else {
+
+        document.body.style.background =
+        "linear-gradient(to bottom,#000814,#00030a,#000000)";
+
+        depthText.innerHTML =
+        `Depth: ${depthMeters}m 💎<br>Treasure Zone`;
+
+    }
+}
+
+        function showReason() {
+            reasonText.style.opacity = 0;
+            setTimeout(() => {
+                reasonText.innerHTML = reasons[currentReason];
+                numberText.innerHTML = currentReason + 1;
+                updateOceanDepth();
+                reasonText.style.opacity = 1;
+            }, 300);
+        }
+
+        // Start Button Handler
+        document.getElementById("startBtn").addEventListener("click", () => {
+            startAudio();
+            switchView(heroView, reasonsView);
+            currentReason = 0;
+            showReason();
+        });
+
+        // Next Reason Button Handler
+        if (nextBtn) {
+            nextBtn.addEventListener("click", () => {
+                oceanScene.classList.add("diving");
+                setTimeout(() => oceanScene.classList.remove("diving"), 800);
+
+                currentReason++;
+
+                if (currentReason < reasons.length) {
+                    showReason();
+                } else {
+                    switchView(reasonsView, endingView);
+                    startTypewriter();
+                }
+            });
+        }
+
+        // Restart Button
+        document.getElementById("restartBtn").addEventListener("click", () => {
+            currentReason = 0;
+            switchView(endingView, heroView);
+        });
+
+        // ------------------------------------------
+        // TYPEWRITER EFFECT FOR ENDING
+        // ------------------------------------------
+        const typewriterEl = document.getElementById("typewriter");
+        const endingText = 
+`Dear Lucile,
+
+Maybe one hundred reasons
+will never be enough.
+
+Because every day...
+you give me another one.
+
+You became my happiness.
+My peace.
+My favorite person.
+
+💙 Forever Yours 💙`;
+
+        function startTypewriter() {
+            typewriterEl.innerHTML = "";
+            let idx = 0;
+            function typeChar() {
+                if (idx < endingText.length) {
+                    typewriterEl.innerHTML += endingText.charAt(idx);
+                    idx++;
+                    setTimeout(typeChar, 45);
+                }
+            }
+            typeChar();
+        }
+
+        // ------------------------------------------
+        // OCEAN LIFE GENERATORS (Fish, Bubbles, Hearts, Jelly)
+        // ------------------------------------------
+        
+        // Shark Cursor Following
+        const shark = document.getElementById("shark");
+        if (shark) {
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let currentX = mouseX, currentY = mouseY;
+
+            document.addEventListener("mousemove", (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animateShark() {
+                currentX += (mouseX - currentX) * 0.08;
+                currentY += (mouseY - currentY) * 0.08;
+                shark.style.left = currentX + "px";
+                shark.style.top = currentY + "px";
+                requestAnimationFrame(animateShark);
+            }
+            animateShark();
+        }
+
+        // Bubbles Generator
+        const bubblesContainer = document.getElementById("bubbles");
+        if (bubblesContainer) {
+            function createBubble() {
+                const bubble = document.createElement("div");
+                bubble.className = "bubble";
+                const size = 10 + Math.random() * 35;
+                bubble.style.width = size + "px";
+                bubble.style.height = size + "px";
+                bubble.style.left = Math.random() * 100 + "vw";
+                bubble.style.animationDuration = (6 + Math.random() * 7) + "s";
+                bubblesContainer.appendChild(bubble);
+
+                setTimeout(() => bubble.remove(), 13000);
+            }
+            setInterval(createBubble, 300);
+            createBubble(); createBubble();
+        }
+
+        // Fish Generator
+        const fishContainer = document.getElementById("fishContainer");
+        if (fishContainer) {
+            const fishes = ["🐠", "🐟", "🐡", "🐋"];
+            function createFish() {
+                const fish = document.createElement("div");
+                fish.className = "fish";
+                fish.innerHTML = fishes[Math.floor(Math.random() * fishes.length)];
+                fish.style.top = (10 + Math.random() * 75) + "vh";
+                fish.style.right = "";
+                fish.style.left = "";
+                fish.style.transform = "";
+const fromRight = Math.random() > 0.5;
+
+fish.style.animationDuration = (10 + Math.random() * 8) + "s";
+
+if (fromRight) {
+    fish.style.left = "110%";
+    fish.style.transform = "scaleX(-1)";
+    fish.style.animationName = "fishSwimReverse";
+} else {
+    fish.style.left = "-150px";
+    fish.style.transform = "scaleX(1)";
+    fish.style.animationName = "fishSwim";
+}
+                fishContainer.appendChild(fish);
+
+                setTimeout(() => fish.remove(), 20000);
+            }
+            setInterval(createFish, 2500);
+            createFish();
+        }
+
+        // Jellyfish Generator
+        const jellyContainer = document.getElementById("jellyContainer");
+        if (jellyContainer) {
+            function createJelly() {
+                const jelly = document.createElement("div");
+                jelly.className = "jelly";
+                jelly.innerHTML = "🪼";
+                jelly.style.left = Math.random() * 100 + "vw";
+                jelly.style.animationDuration = (15 + Math.random() * 10) + "s";
+                jellyContainer.appendChild(jelly);
+
+                setTimeout(() => jelly.remove(), 25000);
+            }
+            setInterval(createJelly, 4000);
+        }
+
+        // Floating Hearts Generator
+        const heartsContainer = document.getElementById("hearts");
+        if (heartsContainer) {
+            function createHeart() {
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = Math.random() > 0.5 ? "❤" : "💙";
+                heart.style.left = Math.random() * 100 + "vw";
+                heart.style.fontSize = (15 + Math.random() * 25) + "px";
+                heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+                heartsContainer.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 10000);
+            }
+            setInterval(createHeart, 350);
+        }
+    </script>
+</body>
+</html>
