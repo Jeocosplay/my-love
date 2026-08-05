@@ -1117,7 +1117,8 @@ My favorite person.
                 const fish = document.createElement("div");
                 fish.className = "fish";
                 fish.innerHTML = fishes[Math.floor(Math.random() * fishes.length)];
-                fish.style.fontSize = (50 + Math.random() * 50) + "px";
+                const size = 60 + Math.random() * 80;
+                fish.style.fontSize = size + "px";
                 fish.style.top = (10 + Math.random() * 75) + "vh";
                 fish.style.right = "";
                 fish.style.left = "";
