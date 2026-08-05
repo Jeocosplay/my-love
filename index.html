@@ -476,14 +476,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: background 2s, transform 0.8s, filter 0.8s;
+            transition: background 0.2s, transform 0.2s, filter 0.2s;
             position: absolute;
             inset: 0;
         }
 
         .deep-ocean-container.diving {
             transform: scale(1.05);
-            filter: brightness(.7);
+            filter: brightness(5);
         }
 function updateOceanDepth(){
 
@@ -567,6 +567,10 @@ function updateOceanDepth(){
             box-shadow: 0 0 30px white;
             animation: pearlGlow 2s infinite;
             margin-bottom: 15px;
+            
+            position: absolute;
+             left: 20px;
+            top: 20px;
         }
 
         @keyframes pearlGlow {
