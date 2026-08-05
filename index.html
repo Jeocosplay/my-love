@@ -902,11 +902,11 @@ function updateOceanDepth(){
 
         function startAudio() {
             if (oceanSound) {
-                oceanSound.volume = 100;
+                oceanSound.volume = 1;
                 oceanSound.play().catch(() => console.log("Audio play blocked by browser."));
             }
             if (loveMusic) {
-                loveMusic.volume = 0.3;
+                loveMusic.volume = 1;
                 loveMusic.play().catch(() => console.log("Audio play blocked by browser."));
             }
         }
@@ -1148,7 +1148,7 @@ if (fromRight) {
             function createJelly() {
                 const jelly = document.createElement("div");
                 jelly.className = "jelly";
-                jelly.innerHTML = "🪼";
+                jelly.innerHTML = "🦈";
                 jelly.style.left = Math.random() * 100 + "vw";
                 jelly.style.animationDuration = (15 + Math.random() * 10) + "s";
                 jellyContainer.appendChild(jelly);
