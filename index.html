@@ -902,7 +902,7 @@ function updateOceanDepth(){
 
         function startAudio() {
             if (oceanSound) {
-                oceanSound.volume = 0.08;
+                oceanSound.volume = 100;
                 oceanSound.play().catch(() => console.log("Audio play blocked by browser."));
             }
             if (loveMusic) {
